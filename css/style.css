@@ -1,0 +1,124 @@
+:root {
+    --white: hsl(0,0%, 100%);
+    --off-white: hsl(0, 0%, 94%);
+    --grey: hsl(0, 0%, 86%);
+    --Dark-grey: hsl(0, 1%, 44%);
+    --off-black: hsl(0, 0%, 8%);
+    --purple: #864CFD;
+     --red: hsl(0, 100%, 47%);
+
+
+}
+*{
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--off-white);
+}
+.container {
+    background-color: var(--white);
+    width: 420px;
+    max-width: 80%;
+    padding: 30px;
+    position: relative;
+    border-radius: 5% 5% 35% 5%;
+   
+
+}
+.container-input span{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+    color: var(--Dark-grey);
+}
+input {
+    width: 70px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--off-white);
+    
+    outline: none;
+}
+
+input:focus {
+    border: 2px solid var(--purple);
+}
+
+
+
+small {
+    color: red;
+    font-size: 0.5rem;
+    font-weight: smaller;
+    font-family: sans-serif;
+    text-transform: capitalize;
+    font-family:'Poppins' sans-serif;
+}
+
+.submit-btn {
+   
+    width: 50px;
+    height: 50px; 
+    padding: 10px;
+    display: flex;
+   background-color: var(--purple);
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: 90px;
+}
+.submit-btn:hover{
+    background-color: black;
+    cursor: pointer;
+}
+
+.result span{
+    font-size: 2.75rem;
+    color: var(--purple);
+    font-style: italic;
+}
+
+.container-input{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+
+}
+.input-type{
+    display: flex;
+    border-bottom: 2px solid var(--off-white);
+    margin-bottom: 20px;
+}
+@media (max-width: 768px){
+    input{
+        width: 80%;
+    }
+
+    .result span {
+        font-size: 1.75rem;
+    }
+    .submit-btn {
+        width: 40px;
+        height: 40px;
+        right: 40%;
+        top: 110px;
+       padding: 10px;
+    }
+    .container-input{
+        margin-bottom: 40px;
+    }
+   
+ .input-type{
+    margin-bottom: 40px;
+ }
+    
+}
