@@ -107,46 +107,91 @@ input_year.addEventListener('input', e =>{
 
 })
 
+function displayAgeData(ageYears, ageMonths, ageDays) {
+       
+    result_day.textContent = ageDays;
+    result_month.textContent = ageMonths;
+    result_year.textContent = ageYears;
+    }
 
+
+
+
+        
+// Initialize age display on page load
+window.addEventListener('load', () => {
+    
+   Get(); // Retrieve and display age data if available
+    isValid = true;
+
+    
+    
+     // Add the event listener for the submit button after setting isValid
+     submit_btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (isValid) {
+         
+ CalculateDate();
+        }
+    });
+});
 
 function CalculateDate() {
-    if (isValid) {
-        const birthday = `${input_month.value}/${input_day.value}/${input_year.value}`;
-        const birthdayObj = new Date(birthday);
-        const ageDiffMill = Date.now() - birthdayObj.getTime();
-        const ageDate = new Date(ageDiffMill);
-        const ageYears = ageDate.getUTCFullYear() - 1970;
-        const ageMonths = ageDate.getUTCMonth();
-        const ageDays = ageDate.getUTCDate() - 1;
+    
+    error_day.textContent !== "" ||
+    error_month.textContent !== "" ||
+    error_year.textContent !== ""
 
-        result_day.textContent = ageDays;
-        result_month.textContent = ageMonths;
-        result_year.textContent = ageYears;
+if (isValid) {
+    const birthday = `${input_month.value}/${input_day.value}/${input_year.value}`;
+    const birthdayObj = new Date(birthday);
+    const ageDiffMill = Date.now() - birthdayObj.getTime();
+    const ageDate = new Date(ageDiffMill);
+    const ageYears = ageDate.getUTCFullYear() - 1970;
+    const ageMonths = ageDate.getUTCMonth();
+    const ageDays = ageDate.getUTCDate() - 1;
 
-        // Store age data in local storage
-        const ageData = {
-            years: ageYears,
-            months: ageMonths,
-            days: ageDays
-        };
-        localStorage.setItem('userAge', JSON.stringify(ageData));
-    } else {
+    
+    displayAgeData(ageYears, ageMonths, ageDays);
+    // Store age data in local storage
+    const ageData = {
+        years: ageYears,
+        months: ageMonths,
+        days: ageDays
+    };
+    
+    localStorage.setItem('userAge', JSON.stringify(ageData));
+} else {
+    alert("Please fix the input errors.");
+     {
         alert("Please fix the input errors.");
     }
+
 }
 
-        function Get() {
-            const val = localStorage.getItem('userAge');
-            if (val === null) {
-                alert('Age data not found in local storage');
-            } else {
-                const ageData = JSON.parse(val);
-                const years = ageData.years;
-                const months = ageData.months;
-                const days = ageData.days;
+}
+
+    function Get() {
+        const val = localStorage.getItem('userAge');
         
-                // Display the retrieved age data
-                p.innerHTML = `Years: ${years}, Months: ${months}, Days: ${days}`;
-            }
+        if (val === null) {
+            alert('Age data not found in local storage');
+        } else {
+            const ageData = JSON.parse(val);
+            const years = ageData.years;
+            const months = ageData.months;
+            const days = ageData.days;
+            displayAgeData(ageData.years, ageData.months, ageData.days);
+            // Add input fields to the DOM
+           
+            // Set input fields to the retrieved values
+           input_year.value = years;
+           input_month.value = months + 1; // Months are zero-based, so add 1
+           input_day.value = days + 1; // Days are zero-based, so add 1
+           
+      
+
+            // Display the retrieved age data
+            
         }
-        
+    }
